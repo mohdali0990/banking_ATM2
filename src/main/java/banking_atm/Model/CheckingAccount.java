@@ -16,22 +16,29 @@ public class CheckingAccount {
     private Integer addOrMinusBalance;
     @Column(name="new_balance")
     private Integer newBalance;
+    @Column(name="customer_id")
+    private Integer customerId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-    private Customer customer;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+//    private Customer customer;
+
 
     public CheckingAccount() {
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
+//    public Customer getCustomer() {
+//        return customer;
+//    }
+//
+//    public void setCustomer(Customer customer) {
+//        this.customer = customer;
+//    }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
+    public Integer getCustomerId() { return customerId; }
+
+    public void setCustomerId(Integer customerId) { this.customerId = customerId; }
 
     public Integer getCheckingId() {
         return checkingId;

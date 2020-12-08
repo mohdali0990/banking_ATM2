@@ -1,6 +1,7 @@
 package banking_atm.Model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="customer")
@@ -14,6 +15,30 @@ public class Customer {
     private String firstName;
     @Column(name="last_name")
     private String lastName;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="customer_id", referencedColumnName = "customer_id")
+    private List<SavingAccount> savingAccount;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="customer_id", referencedColumnName = "customer_id")
+    private List<CheckingAccount>checkingAccount;
+
+    public List<CheckingAccount> getCheckingAccount() {
+        return checkingAccount;
+    }
+
+    public void setCheckingAccount(List<CheckingAccount> checkingAccount) {
+        this.checkingAccount = checkingAccount;
+    }
+
+    public List<SavingAccount> getSavingAccount() {
+        return savingAccount;
+    }
+
+    public void setSavingAccount(List<SavingAccount> savingAccount) {
+        this.savingAccount = savingAccount;
+    }
 
     public Customer() {
     }

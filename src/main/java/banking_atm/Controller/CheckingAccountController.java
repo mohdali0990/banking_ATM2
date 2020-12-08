@@ -55,25 +55,25 @@ public class CheckingAccountController {
 
         return checkingAccountRepo.findAll();
     }
-    @PostMapping("/newcheckingaccount")
-    public String newAccount(@RequestParam("firstName")String firstName,@RequestParam("lastName")String lastname,@RequestParam("addBalance")Integer addingBalance){
-
-        //@RequestParam ("balance")Integer balance,@RequestParam("addBalance")Integer addingBalance,@RequestParam("new_balance") Integer newBalnce
-        CheckingAccount checkingAccount = new CheckingAccount();
-        checkingAccount.setBalance(addingBalance);
-        checkingAccount.setAddOrMinusBalance(addingBalance);
-        checkingAccount.setNewBalance(addingBalance);
-
-        Customer customer = new Customer();
-        customer.setFirstName(firstName);
-        customer.setLastName(lastname);
-
-        checkingAccount.setCustomer(customer);
-
-        checkingAccountRepo.save(checkingAccount);
-
-        return "Account Created";
-    }
+//    @PostMapping("/newcheckingaccount")
+//    public String newAccount(@RequestParam("firstName")String firstName,@RequestParam("lastName")String lastname,@RequestParam("addBalance")Integer addingBalance){
+//
+//        //@RequestParam ("balance")Integer balance,@RequestParam("addBalance")Integer addingBalance,@RequestParam("new_balance") Integer newBalnce
+//        CheckingAccount checkingAccount = new CheckingAccount();
+//        checkingAccount.setBalance(addingBalance);
+//        checkingAccount.setAddOrMinusBalance(addingBalance);
+//        checkingAccount.setNewBalance(addingBalance);
+//
+//        Customer customer = new Customer();
+//        customer.setFirstName(firstName);
+//        customer.setLastName(lastname);
+//
+//        checkingAccount.setCustomer(customer);
+//
+//        checkingAccountRepo.save(checkingAccount);
+//
+//        return "Account Created";
+//    }
 
 
 
