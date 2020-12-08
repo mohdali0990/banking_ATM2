@@ -12,11 +12,11 @@ public class SavingAccountService {
     @Autowired
     private SavingAccountRepo savingAccountRepo;
 
-    public List <SavingAccount> getAllSavingAccounts(){
+    public List <SavingAccount> allSavingAccounts(){
          return savingAccountRepo.findAll();
     }
 
-    public SavingAccount getId(Integer findById){
+    public SavingAccount getAccount(Integer findById){
         return savingAccountRepo.findById(findById).get();
     }
 
