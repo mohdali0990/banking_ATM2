@@ -19,22 +19,9 @@ public class CheckingAccount {
     @Column(name="customer_id")
     private Integer customerId;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-//    private Customer customer;
-
 
     public CheckingAccount() {
     }
-
-//    public Customer getCustomer() {
-//        return customer;
-//    }
-//
-//    public void setCustomer(Customer customer) {
-//        this.customer = customer;
-//    }
-
 
     public Integer getCustomerId() { return customerId; }
 
