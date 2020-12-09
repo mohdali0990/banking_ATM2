@@ -1,6 +1,7 @@
 package banking_atm.Controller;
 
 import banking_atm.Model.Customer;
+import banking_atm.Model.SavingAccount;
 import banking_atm.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,11 @@ public class CustomerController {
     public String newCheckingNSavingAccount(@RequestParam("firstName")String firstName,@RequestParam("lastName")String lastname,@RequestParam("addBalancechecking")Integer addingBalanceChecking,@RequestParam("addBalancesaving")Integer addingBalanceSaving){
 
         return customerService.newCheckingNSavingAccount(firstName, lastname, addingBalanceChecking, addingBalanceSaving);
+    }
+
+    @DeleteMapping(value = "/closeaccount")
+    public String closeAccounts(@RequestParam("id") Integer id){
+        return customerService.closeAccount(id);
     }
 
 }

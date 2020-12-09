@@ -14,7 +14,6 @@ public class CheckingAccountController {
     @Autowired
     private CheckingService checkingService;
 
-
     @GetMapping(value = "/all")
     public List<CheckingAccount> allCheckingAccounts() {
         return checkingService.allCheckingAccounts();
@@ -33,6 +32,11 @@ public class CheckingAccountController {
     @PutMapping(value="/deposit")
     public CheckingAccount deposit(@RequestParam("addBalance")Integer addBalance,@RequestParam("id") Integer id){
         return checkingService.deposit(addBalance, id);
+    }
+
+    @DeleteMapping(value = "/closeaccount")
+    public String closeAccount(@RequestParam("id") Integer id){
+        return checkingService.closeAccount(id);
     }
 
 }

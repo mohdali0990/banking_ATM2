@@ -84,4 +84,9 @@ public class CustomerService {
 
         return "Accounts Created";
     }
+
+    public String closeAccount(Integer id){
+        customerRepo.deleteById(id);
+        return "Accounts Closed";
+    }
 }

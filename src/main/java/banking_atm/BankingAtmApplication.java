@@ -11,5 +11,4 @@ public class BankingAtmApplication {
 		SpringApplication.run(BankingAtmApplication.class, args);
 	}
 
-
 }

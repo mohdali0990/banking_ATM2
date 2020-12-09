@@ -16,12 +16,12 @@ public class SavingAccountController {
 
     @GetMapping(value = "/all")
     public List<SavingAccount> getAll(){
-        return savingAccountService.getAllSavingAccounts();
+        return savingAccountService.allSavingAccounts();
     }
 
     @GetMapping(value = "/getAccount/{id}")
     public SavingAccount getId(@PathVariable("id")Integer findById){
-        return savingAccountService.getId(findById);
+        return savingAccountService.getAccount(findById);
     }
 
     @PutMapping(value ="/withdrawal")
@@ -32,5 +32,10 @@ public class SavingAccountController {
     @PutMapping(value="/deposit")
     public SavingAccount deposit (@RequestParam("addBalance")Integer addBalance,@RequestParam("id") Integer id) {
         return savingAccountService.deposit(addBalance, id);
+    }
+
+    @DeleteMapping(value = "/closeaccount")
+    public String closeAccount(@RequestParam("id") Integer id){
+       return savingAccountService.closeAccount(id);
     }
 }

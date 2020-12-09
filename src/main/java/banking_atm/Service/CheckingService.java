@@ -46,4 +46,9 @@ public class CheckingService {
         return checkingAccountRepo.findById(id).get();
     }
 
+    public String closeAccount(Integer id){
+        checkingAccountRepo.deleteById(id);
+        return "Account Closed";
+    }
+
 }

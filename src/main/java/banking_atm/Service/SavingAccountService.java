@@ -46,5 +46,10 @@ public class SavingAccountService {
 
         return savingAccountRepo.findById(id).get();
     }
+
+    public String closeAccount(Integer id){
+          savingAccountRepo.deleteById(id);
+          return "Account Closed";
+    }
 }
 
