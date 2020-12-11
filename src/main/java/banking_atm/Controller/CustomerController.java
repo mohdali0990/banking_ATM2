@@ -46,5 +46,5 @@ public class CustomerController {
     public String closeAccounts(@RequestParam("id") Integer id){
         return customerService.closeAccount(id);
     }
-
+    
 }

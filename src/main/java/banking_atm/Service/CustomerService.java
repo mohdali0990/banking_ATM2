@@ -23,7 +23,7 @@ public class CustomerService {
         return customerRepo.findById(findById).get();
     }
 
-    public String newSavingAccount(String firstName, String lastname,Integer addingBalance){
+    public String newSavingAccount(String firstName, String lastname, Integer addingBalance) {
 
         SavingAccount savingAccount = new SavingAccount();
         savingAccount.setBalance(addingBalance);
@@ -41,7 +41,7 @@ public class CustomerService {
         return "Account Created";
     }
 
-    public String newCheckingAccount(String firstName,String lastname,Integer addingBalance){
+    public String newCheckingAccount(String firstName, String lastname, Integer addingBalance) {
 
         CheckingAccount checkingAccount = new CheckingAccount();
         checkingAccount.setBalance(addingBalance);
@@ -59,7 +59,7 @@ public class CustomerService {
         return "Account Created";
     }
 
-    public String newCheckingNSavingAccount(String firstName,String lastname,Integer addingBalanceChecking,Integer addingBalanceSaving){
+    public String newCheckingNSavingAccount(String firstName, String lastname, Integer addingBalanceChecking, Integer addingBalanceSaving) {
 
         CheckingAccount checkingAccount = new CheckingAccount();
         checkingAccount.setBalance(addingBalanceChecking);
@@ -85,8 +85,9 @@ public class CustomerService {
         return "Accounts Created";
     }
 
-    public String closeAccount(Integer id){
+    public String closeAccount(Integer id) {
         customerRepo.deleteById(id);
         return "Accounts Closed";
     }
+
 }

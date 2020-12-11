@@ -24,6 +24,9 @@ public class Customer {
     @JoinColumn(name="customer_id", referencedColumnName = "customer_id")
     private List<CheckingAccount>checkingAccount;
 
+    public Customer() {
+    }
+
     public List<CheckingAccount> getCheckingAccount() {
         return checkingAccount;
     }
@@ -39,10 +42,6 @@ public class Customer {
     public void setSavingAccount(List<SavingAccount> savingAccount) {
         this.savingAccount = savingAccount;
     }
-
-    public Customer() {
-    }
-
 
     public Integer getCustomerId() {
         return customerId;
