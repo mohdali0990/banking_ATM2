@@ -34,7 +34,7 @@ public class CheckingAccountController {
         return checkingService.deposit(addBalance, id);
     }
 
-    @DeleteMapping(value = "/closeaccount")
+    @PutMapping(value = "/closeaccount")
     public String closeAccount(@RequestParam("id") Integer id){
         return checkingService.closeAccount(id);
     }

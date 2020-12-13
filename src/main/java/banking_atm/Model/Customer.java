@@ -15,6 +15,8 @@ public class Customer {
     private String firstName;
     @Column(name="last_name")
     private String lastName;
+    @Column(name="status")
+    private String status;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="customer_id", referencedColumnName = "customer_id")
@@ -25,6 +27,14 @@ public class Customer {
     private List<CheckingAccount>checkingAccount;
 
     public Customer() {
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public List<CheckingAccount> getCheckingAccount() {

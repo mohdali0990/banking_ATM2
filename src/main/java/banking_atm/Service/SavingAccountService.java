@@ -48,7 +48,13 @@ public class SavingAccountService {
     }
 
     public String closeAccount(Integer id){
-          savingAccountRepo.deleteById(id);
+        SavingAccount savingAccount = savingAccountRepo.findById(id).get();
+        savingAccount.setAddOrMinusBalance(null);
+        savingAccount.setAddOrMinusBalance(null);
+        savingAccount.setNewBalance(null);
+        savingAccount.setBalance(null);
+        savingAccount.setStatus("inactive");
+        savingAccountRepo.save(savingAccount);
           return "Account Closed";
     }
 }

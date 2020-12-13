@@ -47,7 +47,14 @@ public class CheckingService {
     }
 
     public String closeAccount(Integer id){
-        checkingAccountRepo.deleteById(id);
+        CheckingAccount checkingAccount = checkingAccountRepo.findById(id).get();
+        checkingAccount.setAddOrMinusBalance(null);
+        checkingAccount.setAddOrMinusBalance(null);
+        checkingAccount.setNewBalance(null);
+        checkingAccount.setBalance(null);
+        checkingAccount.setStatus("inactive");
+        checkingAccountRepo.save(checkingAccount);
+
         return "Account Closed";
     }
 

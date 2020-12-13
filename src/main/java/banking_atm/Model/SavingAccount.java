@@ -18,28 +18,19 @@ public class SavingAccount {
     private Integer newBalance;
     @Column(name="customer_id")
     private Integer customerId;
+    @Column(name="status")
+    private String status;
 
     public SavingAccount() {
     }
 
-    public SavingAccount(Integer savingId, Integer balance, Integer addorMinusBalance, Integer newBalance, Integer customerId) {
-        this.savingId = savingId;
-        this.balance = balance;
-        this.addOrMinusBalance = addorMinusBalance;
-        this.newBalance = newBalance;
-        this.customerId = customerId;
-    }
+    public String getStatus() { return status; }
 
-    @Override
-    public String toString() {
-        return "SavingAccount{" +
-                "savingId=" + savingId +
-                ", balance=" + balance +
-                ", addorMinusBalance=" + addOrMinusBalance +
-                ", newBalance=" + newBalance +
-                ", customerId=" + customerId +
-                '}';
-    }
+    public void setStatus(String status) { this.status = status; }
+
+    public Integer getAddOrMinusBalance() { return addOrMinusBalance; }
+
+    public void setAddOrMinusBalance(Integer addOrMinusBalance) { this.addOrMinusBalance = addOrMinusBalance; }
 
     public Integer getSavingId() {
         return savingId;

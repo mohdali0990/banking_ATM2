@@ -29,10 +29,12 @@ public class CustomerService {
         savingAccount.setBalance(addingBalance);
         savingAccount.setAddorMinusBalance(addingBalance);
         savingAccount.setNewBalance(addingBalance);
+        savingAccount.setStatus("active");
 
         Customer customer = new Customer();
         customer.setFirstName(firstName);
         customer.setLastName(lastname);
+        customer.setStatus("active");
 
         customer.setSavingAccount(Arrays.asList(savingAccount));
 
@@ -47,10 +49,12 @@ public class CustomerService {
         checkingAccount.setBalance(addingBalance);
         checkingAccount.setAddOrMinusBalance(addingBalance);
         checkingAccount.setNewBalance(addingBalance);
+        checkingAccount.setStatus("active");
 
         Customer customer = new Customer();
         customer.setFirstName(firstName);
         customer.setLastName(lastname);
+        customer.setStatus("active");
 
         customer.setCheckingAccount(Arrays.asList(checkingAccount));
 
@@ -65,16 +69,19 @@ public class CustomerService {
         checkingAccount.setBalance(addingBalanceChecking);
         checkingAccount.setAddOrMinusBalance(addingBalanceChecking);
         checkingAccount.setNewBalance(addingBalanceChecking);
+        checkingAccount.setStatus("active");
 
         SavingAccount savingAccount = new SavingAccount();
         savingAccount.setBalance(addingBalanceSaving);
         savingAccount.setAddorMinusBalance(addingBalanceSaving);
         savingAccount.setNewBalance(addingBalanceSaving);
+        savingAccount.setStatus("active");
 
 
         Customer customer = new Customer();
         customer.setFirstName(firstName);
         customer.setLastName(lastname);
+        customer.setStatus("active");
 
         customer.setCheckingAccount(Arrays.asList(checkingAccount));
         customer.setSavingAccount(Arrays.asList(savingAccount));
@@ -86,8 +93,34 @@ public class CustomerService {
     }
 
     public String closeAccount(Integer id) {
-        customerRepo.deleteById(id);
+        Customer customer = customerRepo.findById(id).get();
+        customer.setStatus("inactive");
+
+        List<CheckingAccount>list = customer.getCheckingAccount();
+        CheckingAccount checkingAccount = new CheckingAccount();
+        checkingAccount.setBalance(null);
+        checkingAccount.setAddOrMinusBalance(null);
+        checkingAccount.setNewBalance(null);
+        checkingAccount.setStatus("inactive");
+        list.add(checkingAccount);
+
+
+        List<SavingAccount>list1 = customer.getSavingAccount();
+        SavingAccount savingAccount = new SavingAccount();
+        savingAccount.setBalance(null);
+        savingAccount.setAddorMinusBalance(null);
+        savingAccount.setNewBalance(null);
+        savingAccount.setStatus("inactive");
+        list1.add(savingAccount);
+
+        customer.setCheckingAccount(list);
+        customer.setSavingAccount(list1);
+
+
+        customerRepo.save(customer);
+
         return "Accounts Closed";
     }
+
 
 }

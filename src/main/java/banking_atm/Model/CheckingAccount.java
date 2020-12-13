@@ -18,10 +18,16 @@ public class CheckingAccount {
     private Integer newBalance;
     @Column(name="customer_id")
     private Integer customerId;
+    @Column(name="status")
+    private String status;
 
 
     public CheckingAccount() {
     }
+
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
 
     public Integer getCustomerId() { return customerId; }
 

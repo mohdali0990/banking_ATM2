@@ -4,7 +4,6 @@ import banking_atm.Model.SavingAccount;
 import banking_atm.Service.SavingAccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -34,7 +33,7 @@ public class SavingAccountController {
         return savingAccountService.deposit(addBalance, id);
     }
 
-    @DeleteMapping(value = "/closeaccount")
+    @PutMapping(value = "/closeaccount")
     public String closeAccount(@RequestParam("id") Integer id){
        return savingAccountService.closeAccount(id);
     }
