@@ -3,9 +3,13 @@ package banking_atm.Service;
 import banking_atm.Model.CheckingAccount;
 import banking_atm.Model.Customer;
 import banking_atm.Model.SavingAccount;
+import banking_atm.Repo.CheckingAccountRepo;
 import banking_atm.Repo.CustomerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,6 +18,9 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepo customerRepo;
+
+    @Autowired
+    private CheckingAccountRepo checkingAccountRepo;
 
     public List<Customer> getAll() {
         return customerRepo.findAll();
@@ -96,28 +103,36 @@ public class CustomerService {
         Customer customer = customerRepo.findById(id).get();
         customer.setStatus("inactive");
 
-        List<CheckingAccount>list = customer.getCheckingAccount();
-        CheckingAccount checkingAccount = new CheckingAccount();
+
+
+        CheckingAccount checkingAccount = (CheckingAccount) checkingAccountRepo.findCustomerByCustomerId(id);
+        //int checkId= checkingAccountRepo.findBycustomerId(id);
+        List<CheckingAccount> list = customer.getCheckingAccount();
+        //checkingAccount.setCustomerId(checkId);
         checkingAccount.setBalance(null);
         checkingAccount.setAddOrMinusBalance(null);
         checkingAccount.setNewBalance(null);
         checkingAccount.setStatus("inactive");
-        list.add(checkingAccount);
+
+         list.add(checkingAccount);
 
 
-        List<SavingAccount>list1 = customer.getSavingAccount();
-        SavingAccount savingAccount = new SavingAccount();
-        savingAccount.setBalance(null);
-        savingAccount.setAddorMinusBalance(null);
-        savingAccount.setNewBalance(null);
-        savingAccount.setStatus("inactive");
-        list1.add(savingAccount);
+
+//        List<SavingAccount>list1 = customer.getSavingAccount();
+//        SavingAccount savingAccount = customerRepo.findById(customer.getSavingAccount());
+//        savingAccount.setBalance(null);
+//        savingAccount.setAddorMinusBalance(null);
+//        savingAccount.setNewBalance(null);
+//        savingAccount.setStatus("inactive");
+//        list1.add(savingAccount);
 
         customer.setCheckingAccount(list);
-        customer.setSavingAccount(list1);
+        //customer.setSavingAccount(list1);
 
 
         customerRepo.save(customer);
+
+
 
         return "Accounts Closed";
     }
