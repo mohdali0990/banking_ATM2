@@ -17,10 +17,8 @@ public class CustomerService {
 
     @Autowired
     private CustomerRepo customerRepo;
-
     @Autowired
     private CheckingAccountRepo checkingAccountRepo;
-
     @Autowired
     private SavingAccountRepo savingAccountRepo;
 
@@ -107,15 +105,15 @@ public class CustomerService {
         customer.setStatus("inactive");
 
         CheckingAccount checkingAccount = checkingAccountRepo.findByCustomerId(id).get();
-        checkingAccount.setBalance(null);
-        checkingAccount.setAddOrMinusBalance(null);
-        checkingAccount.setNewBalance(null);
+        checkingAccount.setBalance(0);
+        checkingAccount.setAddOrMinusBalance(0);
+        checkingAccount.setNewBalance(0);
         checkingAccount.setStatus("inactive");
 
         SavingAccount savingAccount = savingAccountRepo.findByCustomerId(id).get();
-        savingAccount.setBalance(null);
-        savingAccount.setAddorMinusBalance(null);
-        savingAccount.setNewBalance(null);
+        savingAccount.setBalance(0);
+        savingAccount.setAddorMinusBalance(0);
+        savingAccount.setNewBalance(0);
         savingAccount.setStatus("inactive");
 
         customerRepo.save(customer);
