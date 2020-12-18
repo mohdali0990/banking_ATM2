@@ -1,5 +1,6 @@
 package banking_atm.Service;
 
+import banking_atm.Exceptions.ApiRequestException;
 import banking_atm.Model.CheckingAccount;
 import banking_atm.Model.Customer;
 import banking_atm.Model.SavingAccount;

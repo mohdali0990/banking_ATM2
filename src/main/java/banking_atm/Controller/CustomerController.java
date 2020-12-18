@@ -1,5 +1,7 @@
 package banking_atm.Controller;
 
+import banking_atm.Exceptions.ApiExceptionHandler;
+import banking_atm.Exceptions.ApiRequestException;
 import banking_atm.Model.Customer;
 import banking_atm.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ public class CustomerController {
     }
 
     @GetMapping(value ="/id/{id}")
+    @ExceptionHandler(ApiRequestException.class)
     public Customer getId(@PathVariable("id")Integer findById) {
         return customerService.getId(findById);
     }
