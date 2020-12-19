@@ -9,7 +9,6 @@ import banking_atm.Repo.CustomerRepo;
 import banking_atm.Repo.SavingAccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class CustomerService {
         return customerRepo.findAll();
     }
 
-    public Customer getId(Integer findById) {
-        return customerRepo.findById(findById).get();
+    public Customer getId(Integer findById){
+        return customerRepo.findById(findById).orElseThrow(() -> new ApiRequestException("Id does not exist. Please try again."));
     }
 
     public String newSavingAccount(String firstName, String lastname, Integer addingBalance) {
@@ -102,7 +101,7 @@ public class CustomerService {
 
     public String closeAccount(Integer id) {
 
-        Customer customer = customerRepo.findById(id).get();
+        Customer customer = customerRepo.findById(id).orElseThrow(() -> new ApiRequestException("Customer does not exist. Please try again."));
         customer.setStatus("inactive");
 
         CheckingAccount checkingAccount = checkingAccountRepo.findByCustomerId(id).get();
@@ -121,10 +120,11 @@ public class CustomerService {
         checkingAccountRepo.save(checkingAccount);
         savingAccountRepo.save(savingAccount);
 
-        //customer.setCheckingAccount(Arrays.asList(cu));
-        //customer.setSavingAccount(list1);
-
         return "Accounts Closed";
+    }
+
+    public Customer findByFullName(String firstName,String lastName){
+        return customerRepo.findByFirstNameAndLastName(firstName,lastName).orElseThrow(() -> new ApiRequestException("Name does not exist. Please check and try again."));
     }
 
 

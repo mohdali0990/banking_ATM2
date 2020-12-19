@@ -21,7 +21,6 @@ public class CustomerController {
     }
 
     @GetMapping(value ="/id/{id}")
-    @ExceptionHandler(ApiRequestException.class)
     public Customer getId(@PathVariable("id")Integer findById) {
         return customerService.getId(findById);
     }
@@ -47,6 +46,11 @@ public class CustomerController {
     @PutMapping(value = "/closeaccount")
     public String closeAccounts(@RequestParam("id") Integer id){
         return customerService.closeAccount(id);
+    }
+
+    @GetMapping(value= "/findbyname")
+    public Customer findByName(@RequestParam("firstname")String firstName,@RequestParam("lastname")String lastName){
+        return customerService.findByFullName(firstName,lastName);
     }
 
 }
