@@ -1,6 +1,7 @@
 package banking_atm.Controller;
 
 import banking_atm.Model.CheckingAccount;
+import banking_atm.Model.Customer;
 import banking_atm.Service.CheckingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

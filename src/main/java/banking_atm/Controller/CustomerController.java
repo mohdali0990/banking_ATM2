@@ -2,18 +2,31 @@ package banking_atm.Controller;
 
 import banking_atm.Exceptions.ApiExceptionHandler;
 import banking_atm.Exceptions.ApiRequestException;
+import banking_atm.Model.CheckingAccount;
 import banking_atm.Model.Customer;
 import banking_atm.Service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
 @RequestMapping("/customer")
+@Validated
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
+
+    @PostMapping(value = "/checkingcustomer")
+    public Customer checkingnew(@Valid @RequestBody Customer customer){
+        return customerService.checking(customer);
+    }
 
     @GetMapping(value ="/all")
     public List<Customer> getAll() {
@@ -32,7 +45,7 @@ public class CustomerController {
     }
 
     @PostMapping(value ="/newcheckingaccount")
-    public String newCheckingAccount(@RequestParam("firstName")String firstName,@RequestParam("lastName")String lastname,@RequestParam("addBalance")Integer addingBalance){
+    public String newCheckingAccount(@RequestParam("firstName")@NotEmpty String firstName, @RequestParam("lastName")String lastname, @RequestParam("addBalance")Integer addingBalance){
 
         return customerService.newCheckingAccount(firstName, lastname, addingBalance);
     }

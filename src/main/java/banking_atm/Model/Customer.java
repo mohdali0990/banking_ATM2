@@ -1,6 +1,8 @@
 package banking_atm.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -12,6 +14,8 @@ public class Customer {
     @Column(name="customer_id")
     private Integer customerId;
     @Column(name="first_name")
+    @NotNull(message = "please enter first name.")
+    @Size(min = 5,max = 30)
     private String firstName;
     @Column(name="last_name")
     private String lastName;

@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Bank_Atm2" />
+        <module name="BankAtmSpringData" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BankAtmSpringData" options="-parameters" />
       <module name="Bank_Atm2" options="-parameters" />
     </option>
   </component>

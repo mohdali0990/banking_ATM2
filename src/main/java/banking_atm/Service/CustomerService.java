@@ -22,6 +22,10 @@ public class CustomerService {
     @Autowired
     private SavingAccountRepo savingAccountRepo;
 
+    public Customer checking(Customer customer){
+        return customerRepo.save(customer);
+    }
+
     public List<Customer> getAll() {
         return customerRepo.findAll();
     }
